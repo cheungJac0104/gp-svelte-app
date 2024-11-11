@@ -1,9 +1,33 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import '../app.css';
 	let { children } = $props();
+
+	let token = $state('');
+
+	onMount(() => {
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('token') ?? '';
+        }
+    });
+
   </script>
   
   <div class="flex flex-col min-h-screen">
+	<header class="bg-gray-800 text-white py-4">
+		<div class="container mx-auto flex justify-between items-center">
+			<div class="text-lg font-bold">HKHC</div>
+			<nav class="space-x-4">
+				{#if token}
+                    <a href="/dashboard" class="hover:text-gray-400">Dashboard</a>
+                    <a href="/profile" class="hover:text-gray-400">Profile</a>
+                    <a href="/logout" class="hover:text-gray-400">Logout</a>
+                {:else}
+                    <a href="/admin-login" class="hover:text-gray-400">Admin Login</a>
+                {/if}
+			</nav>
+		</div>
+	</header>
 	<main class="flex-grow">
 	  {@render children()}
 	</main>

@@ -1,25 +1,46 @@
 <script lang="ts">
     import { loginUser } from '$lib/api';
     import { goto } from '$app/navigation';
+    import LoadingScreen from './LoadingScreen.svelte';
   
     let username = '';
     let password = '';
+    let isLoading = false;
+
   
     async function handleLogin() {
-      const response = await loginUser(username, password);
-      if (response.success) {
-        // Handle successful login
-        console.log('Login successful:', response);
-      } else {
-        // Handle login error
-        console.error('Login failed:', response);
+      isLoading = true;
+
+      try {
+          const response = await loginUser(username, password);
+          if (response && response.data) {
+              // Store the token in localStorage
+              localStorage.setItem('token', response.data);
+              console.log('Login successful:', response.message);
+
+              // Redirect to the dashboard page
+              window.location.href = '/dashboard';
+              } else {
+              // Handle login error
+              console.error('Login failed:', response.message);
+          }
+        
+      } catch (error) {
+        console.error('An error occurred:', error);
       }
+      finally {
+        isLoading = false
+      }
+      
     }
   
     function redirectToRegister() {
       goto('/register');
     }
   </script>
+
+  <div>
+    <LoadingScreen {isLoading} />
   
   <form on:submit|preventDefault={handleLogin} class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-bold mb-6">Login</h2>
@@ -36,4 +57,6 @@
       <button type="button" on:click={redirectToRegister} class="text-indigo-600 hover:text-indigo-900">Register</button>
     </div>
   </form>
+
+</div>
   

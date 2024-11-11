@@ -1,5 +1,6 @@
 <script lang="ts">
     import { registerUser } from '$lib/api';
+    import LoadingScreen from '../LoadingScreen.svelte';
   
     let name = '';
     let email = '';
@@ -7,6 +8,7 @@
     let address = '';
     let type = 'personal';
     let username = '';
+    let isLoading = false;
   
     async function handleRegister() {
       if (!name || !email || !phone || !address || !username) {
@@ -23,17 +25,27 @@
         type,
         username
       };
-  
+
+      isLoading = true;
+      try {
       const response = await registerUser(user);
-      if (response.success) {
-        // Handle successful registration
+      if (response) {
         console.log('Registration successful:', response);
+        alert('Registration successful, please turn back to the login page');
       } else {
-        // Handle registration error
         console.error('Registration failed:', response);
+        alert('Registration failed, please try again');
       }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    } finally {
+      isLoading = false;
+    }
     }
   </script>
+
+  <div>
+    <LoadingScreen {isLoading} />
   
   <form on:submit|preventDefault={handleRegister} class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-bold mb-6">Register</h2>
@@ -69,4 +81,5 @@
       <a href="/" class="text-indigo-600 hover:text-indigo-900">Already have an account? Login</a>
     </div>
   </form>
+  </div>
   
