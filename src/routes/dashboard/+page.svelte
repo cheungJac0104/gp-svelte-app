@@ -1,4 +1,6 @@
 <script lang="ts">
+    
+
     let donationPrograms = [
       { id: 1, name: "Homeless Children Program", amount: 1000 },
       { id: 2, name: "Education for All", amount: 5000 },

@@ -41,3 +41,59 @@ export async function loginUser(username: string,password: string) : Promise<any
   }
   return data;
 }
+
+export async function admin_retrieve_donation_programs() : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/retrieveDonationProgram`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve donation programs');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function admin_add_donation_program(program: any) : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/addDonationProgram`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(program)
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to add donation program');
+    }
+    return response;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function admin_update_donation_program(program: any) : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/updateDonationProgram`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(program)
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to update donation program');
+    }
+    return response;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
