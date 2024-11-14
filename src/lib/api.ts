@@ -1,5 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-
+import { token } from '$lib/stores.js';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function registerUser(user: User): Promise<any> {
@@ -24,6 +24,9 @@ export async function registerUser(user: User): Promise<any> {
     throw error;
   }
 }
+
+let currentToken : string = '';
+token.subscribe(value => currentToken = `Bearer ${value}`);
 
 
 export async function loginUser(username: string,password: string) : Promise<any> {
@@ -91,6 +94,28 @@ export async function admin_update_donation_program(program: any) : Promise<any>
       throw new Error(response.statusText || 'Failed to update donation program');
     }
     return response;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function user_get_donation_programs() : Promise<any> {
+
+  console.log(token);
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/getDonationProgram`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve donation programs');
+    }
+    return await response.json();
   } catch (error) {
     console.error('Fetch error:', error);
     throw error;
