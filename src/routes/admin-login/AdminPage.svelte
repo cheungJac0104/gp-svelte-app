@@ -156,7 +156,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
     </button>
-    <Modal {show} {title} onClose={closeModal} onAdd={addItem} >
+    <Modal {show} {title} onClose={closeModal} btn_trigger={addItem} btn_title="Add" >
         <!-- Dynamic content for the modal -->
         <form id="donationProgramForm">
             

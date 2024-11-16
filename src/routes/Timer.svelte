@@ -50,7 +50,7 @@
 </script>
 
 <div
-    class="backdrop-blur-sm text-gray-400 px-4 py-2 font-sans flex items-center justify-end h-full"
+    class="backdrop-blur-sm text-gray-400 px-4 py-2 font-sans flex items-end justify-center h-full"
 >
     <div class="flex gap-2">
         <div class="font-medium">
