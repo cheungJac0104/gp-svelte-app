@@ -14,6 +14,7 @@
 			<nav class="space-x-4">
 				{#if $token}
                     <a href="/dashboard" class="hover:text-gray-400">Dashboard</a>
+					<a href="/record" class="hover:text-gray-400">Record</a>
                     <a href="/profile" class="hover:text-gray-400">Profile</a>
                     <a href="/logout" class="hover:text-gray-400">Logout</a>
                 {:else}

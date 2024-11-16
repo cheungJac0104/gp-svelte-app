@@ -122,3 +122,23 @@ export async function user_get_donation_programs() : Promise<any> {
   }
   
 }
+
+export async function user_new_donation(data: any) : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/donate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken },
+      body: JSON.stringify(data)
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to add donation');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
