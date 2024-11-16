@@ -2,6 +2,7 @@
     import { admin_retrieve_donation_programs, admin_add_donation_program, admin_update_donation_program } from '$lib/api';
     import { onMount } from 'svelte';
     import  Modal  from '../Modal.svelte';
+    import SearchBar from '../SearchBar.svelte';
 
     import LoadingScreen from '../LoadingScreen.svelte';
 
@@ -101,9 +102,7 @@
 <div class="container mx-auto p-4 border rounded shadow">
     <LoadingScreen {isLoading}/>
     <h1 class="text-2xl font-bold mb-4">Donation Programs</h1>
-    <div class="mb-4">
-        <input type="text" bind:value={searchQuery} placeholder="Search programs..." class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-      </div>
+    <SearchBar bind:searchQuery={searchQuery} hints="Search by program name / status / description"/>
       
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">

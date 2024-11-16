@@ -139,6 +139,41 @@ export async function user_new_donation(data: any) : Promise<any> {
   } catch (error) {
     console.error('Fetch error:', error);
     throw error;
-  }
-  
+  } 
+}
+
+export async function user_get_donations() : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/getDonationsByDonor`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve donations');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  } 
+}
+
+export async function user_get_acknowledgements() : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/getAcknowledgmentsByDonor`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve acknowledgements');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  } 
 }
