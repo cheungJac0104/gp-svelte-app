@@ -45,6 +45,7 @@
 
         if(changePassword())
         {
+            isLoading = true;
             // Here you would typically send the updated data to your backend
             console.log("Updated donor info:", donor);
             const data = {donor: donor, new_password: newPassword};
@@ -58,6 +59,8 @@
             {
                 alert("Failed to update donor");
             }
+            isLoading = false;
+
 
         }
         
