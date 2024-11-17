@@ -101,6 +101,78 @@ export async function admin_update_donation_program(program: any) : Promise<any>
   
 }
 
+export async function admin_get_user_list(): Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/getDonors`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve user list');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function admin_get_user_activities(): Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/getUserActivity`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve user activities');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function admin_get_donations(): Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/getDonationRecords`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve donations');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+  
+}
+
+export async function admin_send_appreciation_email(data: any): Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/sendAppreciationEmail`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to send appreciation email');
+    }
+    return response;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}
+
 export async function user_get_donation_programs() : Promise<any> {
 
   console.log(token);

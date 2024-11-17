@@ -94,14 +94,10 @@
 
 </script>
 
-<style>
-    /* Add your styles here */
-</style>
-
 
 <div class="container mx-auto p-4 border rounded shadow">
     <LoadingScreen {isLoading}/>
-    <h1 class="text-2xl font-bold mb-4">Donation Programs</h1>
+    <h1 class="text-2xl font-bold mb-4 text-gray-600">Donation Programs</h1>
     <SearchBar bind:searchQuery={searchQuery} hints="Search by program name / status / description"/>
       
       <table class="min-w-full divide-y divide-gray-200">

@@ -24,7 +24,7 @@
       class="p-6 rounded-lg"
       style="background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 45%, #e0e0e0 50%, #f0f0f0 55%, #ffffff 100%)"
     >
-      <h2 class="text-xl font-semibold mb-4 text-gray-800">{title}</h2>
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">{@html title}</h2>
 
       <div class="text-gray-700">
         <slot></slot>
