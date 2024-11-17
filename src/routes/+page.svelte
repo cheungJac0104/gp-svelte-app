@@ -43,9 +43,9 @@
     <LoadingScreen {isLoading} />
   
     <form on:submit|preventDefault={handleLogin} class="max-w-md mx-auto mt-10 p-6 titanium-gradient rounded-lg titanium-shadow">
-      <h2 class="text-2xl font-bold mb-6 text-white">Login</h2>
+      <h2 class="text-2xl font-bold mb-6 text-gray-700">Login</h2>
       <div class="mb-4">
-        <label for="username" class="block text-sm font-medium text-white">Username:</label>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
         <input 
           type="text" 
           id="username" 
@@ -54,7 +54,7 @@
         />
       </div>
       <div class="mb-6">
-        <label for="password" class="block text-sm font-medium text-white">Password:</label>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
         <input 
           type="password" 
           id="password" 
@@ -84,7 +84,16 @@
 
 <style>
   .titanium-gradient {
-    background: linear-gradient(145deg, #BEC2C7 0%, #8F979E 45%, #6A7075 100%);
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f0f0f0 45%,
+      #e0e0e0 50%,
+      #f0f0f0 55%,
+      #ffffff 100%
+    );
+    border: 1px solid rgba(74, 85, 104, 0.2);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
   .purple-titanium-button {
     background: linear-gradient(145deg, #9F7AEA 0%, #805AD5 50%, #6B46C1 100%);
@@ -98,10 +107,6 @@
   .titanium-input {
     background: linear-gradient(
       135deg,
-      #ffffff 0%,
-      #f0f0f0 45%,
-      #e0e0e0 50%,
-      #f0f0f0 55%,
       #ffffff 100%
     );
     border: 1px solid rgba(74, 85, 104, 0.2);

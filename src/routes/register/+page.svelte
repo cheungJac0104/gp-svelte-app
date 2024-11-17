@@ -48,30 +48,30 @@
     <LoadingScreen {isLoading} />
   
     <form on:submit|preventDefault={handleRegister} class="max-w-md mx-auto mt-10 p-6 titanium-gradient rounded-lg titanium-shadow">
-      <h2 class="text-2xl font-bold mb-6 text-white">Register</h2>
+      <h2 class="text-2xl font-bold mb-6 text-gray-700">Register</h2>
       
       <div class="mb-4">
-        <label for="name" class="block text-sm font-medium text-white">Name:</label>
+        <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
         <input type="text" id="name" bind:value={name} class="mt-1 block w-full px-3 py-2 titanium-input rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm" />
       </div>
       
       <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-white">Email:</label>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
         <input type="email" id="email" bind:value={email} class="mt-1 block w-full px-3 py-2 titanium-input rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm" />
       </div>
       
       <div class="mb-4">
-        <label for="phone" class="block text-sm font-medium text-white">Phone:</label>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone:</label>
         <input type="text" id="phone" bind:value={phone} class="mt-1 block w-full px-3 py-2 titanium-input rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm" />
       </div>
       
       <div class="mb-4">
-        <label for="address" class="block text-sm font-medium text-white">Address:</label>
+        <label for="address" class="block text-sm font-medium text-gray-700">Address:</label>
         <input type="text" id="address" bind:value={address} class="mt-1 block w-full px-3 py-2 titanium-input rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm" />
       </div>
       
       <div class="mb-4">
-        <label for="type" class="block text-sm font-medium text-white">Type:</label>
+        <label for="type" class="block text-sm font-medium text-gray-700">Type:</label>
         <select id="type" bind:value={type} class="mt-1 block w-full px-3 py-2 titanium-input titanium-select rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm">
           <option value="personal">Personal</option>
           <option value="organization">Organization</option>
@@ -79,7 +79,7 @@
       </div>
 
       <div class="mb-4">
-        <label for="username" class="block text-sm font-medium text-white">Username:</label>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
         <input type="text" id="username" bind:value={username} class="mt-1 block w-full px-3 py-2 titanium-input rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 sm:text-sm" />
       </div>
       
@@ -93,7 +93,16 @@
 
   <style>
     .titanium-gradient {
-      background: linear-gradient(145deg, #BEC2C7 0%, #8F979E 45%, #6A7075 100%);
+      background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f0f0f0 45%,
+      #e0e0e0 50%,
+      #f0f0f0 55%,
+      #ffffff 100%
+    );
+    border: 1px solid rgba(74, 85, 104, 0.2);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
     }
     .purple-titanium-button {
       background: linear-gradient(145deg, #9F7AEA 0%, #805AD5 50%, #6B46C1 100%);
@@ -104,13 +113,18 @@
       background: linear-gradient(145deg, #805AD5 0%, #6B46C1 50%, #553C9A 100%);
       transform: translateY(-1px);
     }
+
+    input {
+        transition: border-color 0.3s;
+    }
+
+    input:focus {
+        border-color: linear-gradient(145deg, #805AD5 0%, #6B46C1 50%, #553C9A 100%);
+        outline: none;
+    }
     .titanium-input {
       background: linear-gradient(
       135deg,
-      #ffffff 0%,
-      #f0f0f0 45%,
-      #e0e0e0 50%,
-      #f0f0f0 55%,
       #ffffff 100%
     );
     border: 1px solid rgba(74, 85, 104, 0.2);

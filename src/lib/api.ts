@@ -177,3 +177,40 @@ export async function user_get_acknowledgements() : Promise<any> {
     throw error;
   } 
 }
+
+export async function user_get_donor_profile() : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/getDonorProfile`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken }
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to retrieve donor profile');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  } 
+}
+
+export async function user_update_donor_profile(data: any) : Promise<any> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/user/updateDonorProfile`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': currentToken },
+      body: JSON.stringify(data)
+    });
+
+    if (response.status!== 200) {
+      throw new Error(response.statusText || 'Failed to update donor profile');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  } 
+}
