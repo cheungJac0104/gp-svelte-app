@@ -24,7 +24,7 @@
     let message = "";
 
     onMount(async () => {
-        fetchDonationRecords();
+        await fetchDonationRecords();
     });
 
     function openModal(donorName: string, record: any) {
@@ -104,19 +104,21 @@
 
         const data = {
             ack_id : selectedRecord.ack_id,
+            donation_id : selectedRecord.donation_id,
             ack_message : message,
             amount: selectedRecord.amount,
             donorEmail: selectedRecord.donorEmail,
             donorName: selectedRecord.donorName,
             program_name: selectedRecord.program_name
         };
-        
+
         console.log("Selected Record:", data);
         const response = await admin_send_appreciation_email(data);
         if(response)
         {
             console.log("Appreciation email sent successfully.");
             alert("Sending appreciation email...");
+            await fetchDonationRecords();
         }
         isLoading = false;
         closeModal();
